@@ -1,4 +1,3 @@
-{ 
-"run_list": ["recipe[chef_nginx::default]", "recipe[iptables::default]"],
-"nginx": {"default_root":"/usr/share/nginx/html"} 
-} 
+{
+"run_list": ["recipe[jboss::default]"]
+}
