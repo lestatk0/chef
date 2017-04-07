@@ -1,0 +1,9 @@
+default['jboss']['download_url'] = "file:///vagrant/jboss-as-7.1.1.Final.tar.gz"
+default['jboss']['path'] = "/opt/jboss.tar.gz"
+default['jboss']['jboss_home'] = "/opt/jboss-as-7.1.1.Final"
+default['jboss']['jboss_user'] = "jboss-as"
+default['jboss']['jboss_group'] = "jboss-as-group"
+default['jboss']['sample_app'] = "file:///vagrant/testweb.zip"
+default['jboss']['deployment_dir'] = "#{default['jboss']['jboss_home']}/standalone/deployments" 
+default['jboss']['tmp_file'] = '/opt/jboss.tar.gz'
+default['jboss']['tmp_app'] = '/opt/testweb.zip'
