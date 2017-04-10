@@ -1,0 +1,156 @@
+node1 Chef Client finished, 0/18 resources updated in 11 seconds
+[student@epbyminw1766 recipes]$  knife bootstrap node1 --ssh-user root --sudo --identity-file ~/.chef/testorg-validator.pem --node-name node1 -r role[JBOSS] -E test-env
+Node node1 exists, overwrite it? (Y/N) y
+Client node1 exists, overwrite it? (Y/N) y
+Creating new client for node1
+Creating new node for node1
+Connecting to node1
+root@node1's password: 
+node1 -----> Existing Chef installation detected
+node1 Starting the first Chef Client run...
+node1 [2017-04-10T18:31:44+01:00] INFO: Forking chef instance to converge...
+node1 Starting Chef Client, version 12.19.36
+node1 [2017-04-10T18:31:44+01:00] INFO: *** Chef 12.19.36 ***
+node1 [2017-04-10T18:31:44+01:00] INFO: Platform: x86_64-linux
+node1 [2017-04-10T18:31:44+01:00] INFO: Chef-client pid: 1853
+node1 [2017-04-10T18:31:50+01:00] INFO: Setting the run_list to ["role[JBOSS]"] from CLI options
+node1 [2017-04-10T18:31:50+01:00] INFO: Run List is [role[JBOSS]]
+node1 [2017-04-10T18:31:50+01:00] INFO: Run List expands to [jboss::default]
+node1 [2017-04-10T18:31:50+01:00] INFO: Starting Chef Run for node1
+node1 [2017-04-10T18:31:50+01:00] INFO: Running start handlers
+node1 [2017-04-10T18:31:50+01:00] INFO: Start handlers complete.
+node1 [2017-04-10T18:31:50+01:00] INFO: HTTP Request Returned 404 Not Found: 
+node1 [2017-04-10T18:31:50+01:00] INFO: HTTP Request Returned 404 Not Found: 
+node1 [2017-04-10T18:31:50+01:00] INFO: Error while reporting run start to Data Collector. URL: https://host/organizations/testorg/data-collector Exception: 404 -- 404 "Not Found"  (This is normal if you do not have Chef Automate)
+node1 resolving cookbooks for run list: ["jboss::default"]
+node1 [2017-04-10T18:31:50+01:00] INFO: Loading cookbooks [jboss@0.1.0, java@1.48.0, apt@6.0.1, windows@3.0.4, ohai@5.0.2, homebrew@3.0.0]
+node1 Synchronizing Cookbooks:
+node1   - apt (6.0.1)
+node1   - java (1.48.0)
+node1   - ohai (5.0.2)
+node1   - windows (3.0.4)
+node1   - homebrew (3.0.0)
+node1 [2017-04-10T18:31:50+01:00] INFO: Storing updated cookbooks/jboss/templates/jboss-initd.sh.erb in the cache.
+node1   - jboss (0.1.0)
+node1 Installing Cookbook Gems:
+node1 Compiling Cookbooks...
+node1 Converging 17 resources
+node1 Recipe: java::notify
+node1   * log[jdk-version-changed] action nothing[2017-04-10T18:31:50+01:00] INFO: Processing log[jdk-version-changed] action nothing (java::notify line 29)
+node1  (skipped due to action :nothing)
+node1 Recipe: java::openjdk
+node1   * yum_package[java-1.6.0-openjdk] action install[2017-04-10T18:31:50+01:00] INFO: Processing yum_package[java-1.6.0-openjdk] action install (java::openjdk line 53)
+node1  (up to date)
+node1   * yum_package[java-1.6.0-openjdk-devel] action install[2017-04-10T18:31:53+01:00] INFO: Processing yum_package[java-1.6.0-openjdk-devel] action install (java::openjdk line 53)
+node1  (up to date)
+node1   * java_alternatives[set-java-alternatives] action set[2017-04-10T18:31:53+01:00] INFO: Processing java_alternatives[set-java-alternatives] action set (java::openjdk line 59)
+node1  (up to date)
+node1 Recipe: java::set_java_home
+node1   * directory[/etc/profile.d] action create[2017-04-10T18:31:58+01:00] INFO: Processing directory[/etc/profile.d] action create (java::set_java_home line 19)
+node1  (up to date)
+node1   * template[/etc/profile.d/jdk.sh] action create[2017-04-10T18:31:58+01:00] INFO: Processing template[/etc/profile.d/jdk.sh] action create (java::set_java_home line 23)
+node1  (up to date)
+node1 Recipe: jboss::install
+node1   * group[jboss-as-group] action create[2017-04-10T18:31:58+01:00] INFO: Processing group[jboss-as-group] action create (jboss::install line 3)
+node1  (up to date)
+node1   * linux_user[jboss-as] action create[2017-04-10T18:31:58+01:00] INFO: Processing linux_user[jboss-as] action create (jboss::install line 8)
+node1  (up to date)
+node1   * remote_file[/opt/jboss.tar.gz] action create_if_missing[2017-04-10T18:31:58+01:00] INFO: Processing remote_file[/opt/jboss.tar.gz] action create_if_missing (jboss::install line 15)
+node1  (up to date)
+node1   * execute[extract_jboss] action run[2017-04-10T18:31:58+01:00] INFO: Processing execute[extract_jboss] action run (jboss::install line 24)
+node1  (skipped due to not_if)
+node1   * execute[create folder] action run[2017-04-10T18:31:58+01:00] INFO: Processing execute[create folder] action run (jboss::install line 30)
+node1  (skipped due to not_if)
+node1   * template[/etc/jboss-as/jboss_as.conf] action create[2017-04-10T18:31:58+01:00] INFO: Processing template[/etc/jboss-as/jboss_as.conf] action create (jboss::install line 36)
+node1  (up to date)
+node1   * template[/etc/init.d/jboss] action create[2017-04-10T18:31:58+01:00] INFO: Processing template[/etc/init.d/jboss] action create (jboss::install line 49)
+node1 [2017-04-10T18:31:58+01:00] INFO: template[/etc/init.d/jboss] created file /etc/init.d/jboss
+node1 
+node1     - create new file /etc/init.d/jboss[2017-04-10T18:31:58+01:00] INFO: template[/etc/init.d/jboss] updated file contents /etc/init.d/jboss
+node1 
+node1     - update content in file /etc/init.d/jboss from none to 7efbd2
+node1     --- /etc/init.d/jboss 2017-04-10 18:31:58.563776287 +0100
+node1     +++ /etc/init.d/.chef-jboss20170410-1853-nf8q0b       2017-04-10 18:31:58.563776287 +0100
+node1     @@ -1 +1,56 @@
+node1     +#!/bin/bash  
+node1     +### BEGIN INIT INFO  
+node1     +# Provides:          jboss  
+node1     +# Default-Start:     2 3 4 5  
+node1     +# Default-Stop:      0 1 6  
+node1     +# Short-Description: Start/Stop JBoss  
+node1     +### END INIT INFO  
+node1     +# chkconfig: 35 92 1
+node1     +
+node1     +JBOSS_HOME=/opt/jboss-as-7.1.1.Final
+node1     +
+node1     +mkdir -p $JBOSS_HOME/log
+node1     +start_jboss="$JBOSS_HOME/bin/standalone.sh"
+node1     +stop_jboss="$JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown"
+node1     +
+node1     +start() {
+node1     +echo -n "Starting JBoss: "
+node1     +${start_jboss} > $JBOSS_HOME/log/startup.log & 
+node1     +echo "done."
+node1     +}
+node1     +stop() {
+node1     +echo -n "Shutting down JBoss: "
+node1     +${stop_jboss}  > $JBOSS_HOME/log/shutdown.log 
+node1     +echo "done."
+node1     +}
+node1     +status() {
+node1     +JBOSS_PID=$(ps -ef | grep java | grep jboss | awk '{print $2}')
+node1     +if [ -n "$JBOSS_PID" ];
+node1     +      then
+node1     +     echo "JBoss is running.. Process PID=$JBOSS_PID"
+node1     +      else
+node1     +     echo "FAILED"
+node1     +     exit 1
+node1     +fi
+node1     +}
+node1     +case "$1" in
+node1     +start)
+node1     +start
+node1     +;;
+node1     +stop)
+node1     +stop
+node1     +;;
+node1     +restart)
+node1     +stop
+node1     +sleep 10
+node1     +start
+node1     +;;
+node1     +status)
+node1     +status
+node1     +;;
+node1     +*)
+node1     +echo "Usage: $0 {start|stop|restart|status}"; exit 1;
+node1     +;;
+node1     +esac
+node1     +exit 0[2017-04-10T18:31:58+01:00] INFO: template[/etc/init.d/jboss] owner changed to 0
+node1 [2017-04-10T18:31:58+01:00] INFO: template[/etc/init.d/jboss] group changed to 0
+node1 [2017-04-10T18:31:58+01:00] INFO: template[/etc/init.d/jboss] mode changed to 755
+node1 
+node1     - change mode from '' to '0755'
+node1     - change owner from '' to 'root'
+node1     - change group from '' to 'root'
+node1 Recipe: jboss::start
+node1   * service[jboss] action enable[2017-04-10T18:31:58+01:00] INFO: Processing service[jboss] action enable (jboss::start line 1)
+node1  (up to date)
+node1   * service[jboss] action start[2017-04-10T18:31:58+01:00] INFO: Processing service[jboss] action start (jboss::start line 1)
+node1 [2017-04-10T18:31:58+01:00] INFO: service[jboss] started
+node1 
+node1     - start service service[jboss]
+node1 Recipe: jboss::deploy
+node1   * yum_package[unzip] action install[2017-04-10T18:31:58+01:00] INFO: Processing yum_package[unzip] action install (jboss::deploy line 3)
+node1  (up to date)
+node1   * remote_file[/opt/testweb.zip] action create_if_missing[2017-04-10T18:31:58+01:00] INFO: Processing remote_file[/opt/testweb.zip] action create_if_missing (jboss::deploy line 8)
+node1  (up to date)
+node1   * template[/opt/jboss-as-7.1.1.Final/standalone/deployments/hudson/hudson.xml] action create[2017-04-10T18:31:58+01:00] INFO: Processing template[/opt/jboss-as-7.1.1.Final/standalone/deployments/hudson/hudson.xml] action create (jboss::deploy line 25)
+node1  (up to date)
+node1 [2017-04-10T18:31:59+01:00] INFO: Chef Run complete in 8.750564543 seconds
+node1 
+node1 Running handlers:
+node1 [2017-04-10T18:31:59+01:00] INFO: Running report handlers
+node1 Running handlers complete
+node1 [2017-04-10T18:31:59+01:00] INFO: Report handlers complete
+node1 Chef Client finished, 2/18 resources updated in 14 seconds

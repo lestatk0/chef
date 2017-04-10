@@ -6,23 +6,14 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  config.vm.define "master", primary: true do |host|
-  host.vm.box = "centos6.x"
-  host.vm.hostname = "host"
-  host.vm.network "private_network", ip: "192.168.33.10"
-  host.vm.provider "virtualbox" do |node|
-    node.name = "host"
-    node.cpus = 2
-    node.memory = 2048
-    end
-  host.vm.provision "shell", inline: "echo ===HOST READY==="
-  end
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
 
-  config.vm.provision "shell", inline: <<-SHELL
-  rpm --nosignature -i /vagrant/chef-12.19.36-1.el6.x86_64.rpm 
-  rpm --nosignature -i /vagrant/chefdk-1.2.22-1.el6.x86_64.rpm
-  echo "SETUP CHEF IS COMLETED"
-  SHELL
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://atlas.hashicorp.com/search.
+  config.vm.box = "centos6.x"
+  config.vm.hostname = "node1"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -36,7 +27,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+   config.vm.network "private_network", ip: "192.168.33.20"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
