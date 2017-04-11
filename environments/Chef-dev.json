@@ -1,0 +1,9 @@
+{
+  "name": "Chef-dev",
+  "default_attributes": {
+    "web_server_type": {
+      "nginx": "Nginx_web_server",
+      "apache": "Apache_web_server"
+    }
+  }
+}
